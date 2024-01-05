@@ -525,8 +525,9 @@ class MultilingualBehavior extends Behavior
      * @param $language
      * @return string
      */
-    protected function getAttributeName($attribute, $language)
+    public function getAttributeName($attribute, $language)
     {
+        if($language == $this->defaultLanguage) return $attribute;
         $language = $this->abridge ? $language : Inflector::camel2id(Inflector::id2camel($language), "_");
         return $attribute . "_" . $language;
     }
